@@ -1,0 +1,4 @@
+# Momentum observer baseline (fixed bench thrust model, no voltage).
+name: MO
+type: momentum_observer
+gain: 2.0

@@ -1,0 +1,17 @@
+# Same forces as S1, no throttle excitation: observability of k vs F_z and of lambda.
+duration: 120.0
+trajectory:
+  - {t: [0, 120], type: hold, pos: [0, 0, -3]}
+forces:
+  - {type: step, t0: 45, t1: 65, F: [0, 0, 5.0]}
+  - {type: sine, t0: 65, t1: 85, amp: [2.0, 0, 0], freq: 0.5, bias: [0, 1.0, 0]}
+  - {type: impulse, t0: 88, dur: 0.1, F: [10.0, 0, 0]}
+phases:
+  hover: [3, 45]
+  z_step: [45, 65]
+  gust: [65, 85]
+  impulse: [88, 89]
+  hover_end: [90, 120]
+events:
+  step: {t: 45.0, axis: 2, size: 5.0}
+  impulse: {t: 88.0}

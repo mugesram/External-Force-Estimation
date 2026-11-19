@@ -1,0 +1,6 @@
+# EKF-B (plan.pdf): k_b * (V/V0)^2 with the voltage input, k_b and lambda estimated.
+name: EKF-B
+estimate_k: true
+estimate_lambda: true
+use_voltage: true
+estimate_bias: false

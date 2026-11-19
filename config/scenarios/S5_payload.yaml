@@ -1,0 +1,17 @@
+# Hanging-load-like force: 0.4 kg on a 1 m cable picked up at t = 20 s, swinging; lateral moves excite the swing.
+duration: 120.0
+trajectory:
+  - {t: [0, 10], type: hold, pos: [0, 0, -3]}
+  - {t: [10, 35], type: zsteps, pos: [0, 0, -3], amp: 0.5, period: 2.5}
+  - {t: [35, 60], type: hold, pos: [0, 0, -3]}
+  - {t: [60, 80], type: hold, pos: [2, 0, -3]}
+  - {t: [80, 120], type: hold, pos: [0, 0, -3]}
+forces:
+  - {type: payload, t0: 40, t1: 120, mass: 0.4, length: 1.0, swing_deg: 15.0, damping: 0.03}
+phases:
+  hover: [3, 10]
+  excitation: [10, 35]
+  pickup: [40, 60]
+  moves: [60, 120]
+events:
+  step: {t: 40.0, axis: 2, size: 3.92}

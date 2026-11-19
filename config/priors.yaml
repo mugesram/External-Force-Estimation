@@ -1,0 +1,10 @@
+# Bench priors given to the filters. Written by tools/bench_fit.py (Tier 1) and then perturbed like a real
+# bench-to-flight mismatch. These defaults are the Tier 0 truth perturbed by hand:
+#   k_b true = 8.54858e-6 * 1100^2 = 10.344 N  -> +5 %  = 10.861
+#   tau true = 0.040 s                        -> +20 % = 0.048 s -> lam0 = 20.83 1/s
+k0: 10.861
+lam0: 20.83
+u0: 0.1
+V0: 16.8
+mass: 1.6186
+drag: [0.5, 0.3, 0.0]

@@ -1,0 +1,7 @@
+# EKF-B+bias (proposed): EKF-B plus the accelerometer bias.
+name: EKF-B+bias
+estimate_k: true
+estimate_lambda: true
+use_voltage: true
+estimate_bias: true
+# Tuned on Tier 0 seed 0 only (S1, S3, S4), then frozen: the defaults in efe/estimation/ekf.py FilterConfig.

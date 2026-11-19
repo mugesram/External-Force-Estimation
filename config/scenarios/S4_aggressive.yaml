@@ -1,0 +1,13 @@
+# Fast figure-8 with a lateral gust: drag/force separation under motion.
+duration: 120.0
+trajectory:
+  - {t: [0, 10], type: hold, pos: [0, 0, -3]}
+  - {t: [10, 110], type: figure8, center: [0, 0, -3], ax: 3.0, ay: 1.5, period: 6.0}
+  - {t: [110, 120], type: hold, pos: [0, 0, -3]}
+forces:
+  - {type: sine, t0: 40, t1: 80, amp: [0, 1.5, 0], freq: 0.3, bias: [1.0, 0, 0]}
+phases:
+  hover: [3, 10]
+  figure8: [10, 40]
+  figure8_gust: [40, 80]
+  figure8_end: [80, 110]

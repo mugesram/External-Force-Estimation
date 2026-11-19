@@ -1,0 +1,19 @@
+[project]
+name = "efe"
+version = "0.1.0"
+description = "EKF external force estimation for a quadrotor from PWM + battery voltage (no RPM)"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "pandas", "pyarrow", "matplotlib", "pyulog", "pyyaml", "tabulate"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["efe*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

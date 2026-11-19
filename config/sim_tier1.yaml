@@ -1,0 +1,31 @@
+# Tier 1 simulator settings (sim/efe_sim.py).
+physics_hz: 250                 # Pegasus default; PX4's IMU and controllers run at this rate in lockstep
+t_scenario_start: 30.0          # s of simulated time: boot, EKF2 alignment, arm and take-off happen before
+motor_delay_s: 0.004           # command -> rotor latency of this pipeline: one physics step (measured in P0, FINDINGS)
+spawn_enu: [0.0, 0.0, 0.07]
+pegasus_px4_backend:
+  input_offset: [0.0, 0.0, 0.0, 0.0]
+  input_scaling: [1000.0, 1000.0, 1000.0, 1000.0]
+  zero_position_armed: [100.0, 100.0, 100.0, 100.0]
+gps:                            # Pegasus GPS sensor config: an RTK-grade receiver at 10 Hz. Pegasus scales its noise
+                                # by sqrt(dt): sigma = density * sqrt(0.1 s), so these give 2 cm / 3 cm / 3 cm/s
+  update_rate: 10.0
+  fix_type: 6
+  eph: 0.02
+  epv: 0.03
+  sattelites_visible: 18        # (Pegasus' spelling)
+  gps_xy_random_walk: 0.0
+  gps_z_random_walk: 0.0
+  gps_xy_noise_density: 0.063
+  gps_z_noise_density: 0.095
+  gps_vxy_noise_density: 0.095
+  gps_vz_noise_density: 0.095
+imu_extra_bias:                 # added by EfeIMU: stock Pegasus computes but never adds an accelerometer bias
+  acc_bias_sigma: 0.196         # m/s^2 turn-on
+  acc_bias_rw: 0.006
+  acc_bias_tau: 300.0
+battery_voltage_stream:         # what the filter gets as V (PX4's battery_status is unrelated in SITL)
+  rate_hz: 50.0
+  noise: 0.05
+battery_overrides:              # Tier 1 also flies ~30 s of boot/take-off/hover before the scenario
+  capacity_ah: 0.68             # ~same end-of-flight sag as Tier 0 (0.55 Ah over 120 s)

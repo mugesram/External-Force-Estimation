@@ -1,0 +1,12 @@
+# Truth-side vehicle: Pegasus' Iris with our motor/ESC model. Units: kg, N, m, s, rad/s, V.
+# mass and inertia come from the Iris USD; mass is checked in P0 (docs/FINDINGS.md).
+mass: 1.6186                 # Pegasus Iris: body 1.5 kg + 4 rotors (read from the articulation in Tier 1)
+drag: [0.5, 0.3, 0.0]        # body-frame linear drag N/(m/s) (Pegasus LinearDrag default, FLU = FRD magnitudes)
+k_f: 8.54858e-6              # N/(rad/s)^2, Pegasus rotor_constant
+u_scale: 1000.0              # Pegasus PX4 backend: omega = u_scale * u + u_offset
+u_offset: 100.0
+omega_max: 1100.0
+tau: 0.04                    # s, true motor time constant
+V0: 16.8                     # V, voltage at which k_b is defined (the bench voltage)
+voltage_exponent: 2.0        # truth thrust ~ V^gamma; 2 matches the filter's model
+k_f_spread: 0.0              # per-motor k_f spread (fraction), truth mismatch knob

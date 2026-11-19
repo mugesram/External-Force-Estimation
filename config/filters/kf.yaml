@@ -1,0 +1,6 @@
+# Linear KF baseline: bench gain and lag fixed, no voltage, no bias.
+name: KF
+estimate_k: false
+estimate_lambda: false
+use_voltage: false
+estimate_bias: false

@@ -1,0 +1,27 @@
+# PX4 SITL parameters for every Tier 1 run, set as PX4_PARAM_<name> at launch (PX4's rcS applies them after the
+# airframe defaults). SITL only.
+build: px4_sitl_raptor          # existing build; RAPTOR disabled below so the stock MC controllers fly
+airframe: none_iris             # MAVLink HIL airframe (10016_none_iris)
+ros_domain_id: 42
+uxrce_dds_port: 8888
+params:
+  MC_RAPTOR_ENABLE: 0           # stock PX4 multicopter position/attitude/rate controllers
+  THR_MDL_FAC: 0.0              # actuator_motors == what the simulated ESC receives (checked in P0)
+  COM_LOW_BAT_ACT: 0            # PX4's own simulated battery must not trigger failsafes mid-run
+  SIM_BAT_MIN_PCT: 50
+  COM_RC_IN_MODE: 4             # no RC
+  NAV_RCL_ACT: 0
+  NAV_DLL_ACT: 0                # no ground-station link
+  COM_DISARM_PRFLT: -1
+  COM_OF_LOSS_T: 2.0            # offboard loss timeout [s]
+  COM_OBL_RC_ACT: 5             # offboard lost -> land
+  UXRCE_DDS_SYNCT: 0            # PX4 clock is the simulation's, do not sync with the host
+  SDLOG_MODE: 1                 # log from boot until shutdown
+  SDLOG_PROFILE: 27             # default + estimator replay + system id + high rate
+  EKF2_HGT_REF: 1               # GNSS height (RTK)
+  EKF2_GPS_P_NOISE: 0.05
+  EKF2_GPS_V_NOISE: 0.1
+  EKF2_GPS_DELAY: 0.0           # Pegasus' GPS has no latency (PX4's default assumes 110 ms)
+  MPC_THR_HOVER: 0.58           # Iris (1.6186 kg) with our thrust curve at full battery: sqrt(mg/4/k_b)*1.1 - 0.1
+  MPC_XY_VEL_MAX: 4.0
+  MPC_ACC_HOR_MAX: 4.0

@@ -1,0 +1,7 @@
+# EKF-C: EKF-B+bias plus the tilt error of the attitude input (the flight controller's attitude estimate is not exact).
+name: EKF-C
+estimate_k: true
+estimate_lambda: true
+use_voltage: true
+estimate_bias: true
+estimate_tilt: true

@@ -1,0 +1,23 @@
+# Main scenario: throttle excitation, then every force event, then a figure-8; battery sag throughout.
+# Forces in world NED (+z down: a hanging mass is +z).
+duration: 120.0
+trajectory:
+  - {t: [0, 10], type: hold, pos: [0, 0, -3]}
+  - {t: [10, 35], type: zsteps, pos: [0, 0, -3], amp: 0.5, period: 2.5}
+  - {t: [35, 90], type: hold, pos: [0, 0, -3]}
+  - {t: [90, 120], type: figure8, center: [0, 0, -3], ax: 2.0, ay: 1.0, period: 10.0}
+forces:
+  - {type: step, t0: 45, t1: 65, F: [0, 0, 5.0]}
+  - {type: sine, t0: 65, t1: 85, amp: [2.0, 0, 0], freq: 0.5, bias: [0, 1.0, 0]}
+  - {type: impulse, t0: 88, dur: 0.1, F: [10.0, 0, 0]}
+phases:
+  hover: [3, 10]
+  excitation: [10, 35]
+  hover2: [35, 45]
+  z_step: [45, 65]
+  gust: [65, 85]
+  impulse: [88, 89]
+  figure8: [90, 120]
+events:
+  step: {t: 45.0, axis: 2, size: 5.0}
+  impulse: {t: 88.0}

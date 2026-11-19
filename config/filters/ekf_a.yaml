@@ -1,0 +1,7 @@
+# EKF-A: gain and lag estimated online, no voltage input (k has to follow the battery by itself).
+name: EKF-A
+estimate_k: true
+estimate_lambda: true
+use_voltage: false
+estimate_bias: false
+q_k: 2.5e-3
