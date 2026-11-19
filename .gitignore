@@ -10,3 +10,9 @@ ros2_ws/log/
 third_party/
 *.egg-info/
 ros2_ws/src/px4_msgs/
+*.egg-info/
+ros2_ws/src/px4_msgs/
+resources/
+docs/
+.claude/
+CLAUDE.md
